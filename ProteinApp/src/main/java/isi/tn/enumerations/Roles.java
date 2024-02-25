@@ -1,4 +1,4 @@
-package isi.tn.entities;
+package isi.tn.enumerations;
 
 public enum Roles {
 	Admin,

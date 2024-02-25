@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import isi.tn.entities.Roles;
 import isi.tn.entities.User;
+import isi.tn.enumerations.Roles;
 import isi.tn.service.IuserService;
 
 @RestController
@@ -45,6 +45,10 @@ public String delete(@PathVariable Long id) {
 		String res = userv.remove(id);
 		return res;
 	}	
+	@GetMapping("/getUserByName/{firstName}/{lastName}")
+	public List<User> getUserByName(@PathVariable String firstName , @PathVariable String lastName ){
+		return userv.findUserByName(firstName,lastName);
+	}
 
 	@PostMapping("/addusert")
 	public User createUser(@Valid @RequestBody User user) {

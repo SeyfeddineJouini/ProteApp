@@ -8,8 +8,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import isi.tn.entities.Roles;
 import isi.tn.entities.User;
+import isi.tn.enumerations.Roles;
 import isi.tn.repository.userRepository;
 
 @Service
@@ -101,6 +101,19 @@ public class ImpluserService implements IuserService {
 
 	    for (User user : users) {
 	        if (user.getLastName().equals(lname)) {
+	            result.add(user);
+	        }
+	    }
+
+	    return result;   
+	}
+	@Override
+	public List<User> findUserByName(String firstName, String lastName) {
+	    List<User> users = urepos.findAll();
+	    List<User> result = new ArrayList<>();
+
+	    for (User user : users) {
+	        if (user.getLastName().equals(lastName) && user.getFirstName().equals(firstName)) {
 	            result.add(user);
 	        }
 	    }
